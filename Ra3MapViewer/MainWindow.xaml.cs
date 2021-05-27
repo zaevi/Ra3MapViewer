@@ -81,7 +81,7 @@ namespace Ra3MapViewer
         {
             try
             {
-                FileSystem.CopyDirectory(selectedMap.FolderPath, Ra3MapFolder, UIOption.AllDialogs);
+                FileSystem.CopyDirectory(selectedMap.FolderPath, System.IO.Path.Combine(Ra3MapFolder, selectedMap.FileId), UIOption.AllDialogs);
                 ShowMsg($"已导入: {selectedMap.FileId}");
             }
             catch { }
