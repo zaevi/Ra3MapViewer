@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31321.278
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ra3MapViewer", "Ra3MapViewer\Ra3MapViewer.csproj", "{EE0D6F92-CF13-4076-AB61-4D804BB6F087}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EE0D6F92-CF13-4076-AB61-4D804BB6F087}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EE0D6F92-CF13-4076-AB61-4D804BB6F087}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EE0D6F92-CF13-4076-AB61-4D804BB6F087}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EE0D6F92-CF13-4076-AB61-4D804BB6F087}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {04485AFD-BA8E-4E51-BA8C-6B565F4DE9D0}
+	EndGlobalSection
+EndGlobal

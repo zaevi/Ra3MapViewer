@@ -1,0 +1,56 @@
+﻿<Window x:Class="Ra3MapViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Ra3MapViewer"
+        mc:Ignorable="d"
+        Title="红色警戒3地图浏览器 by 扎易" Height="400" Width="650"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        d:DataContext="{d:DesignInstance Type=local:MainWindow}">
+    <Window.Resources>
+        <ContextMenu x:Key="menu">
+            <MenuItem Header="扫描地图文件夹" Click="Menu_Scan_Click"/>
+            <MenuItem Header="扫描外部目录..." Click="Menu_ScanExternal_Click"/>
+            <Separator/>
+            <MenuItem Header="打开地图文件夹" Click="Menu_OpenGameFolder_Click"/>
+        </ContextMenu>
+        <ContextMenu x:Key="contextMenu">
+            <MenuItem Header="导入到游戏" Click="ContextMenu_Import_Click" Visibility="{Binding ImportVisibility}"/>
+            <MenuItem Header="打开目录" Click="ContextMenu_OpenFolder_Click"/>
+            <Separator/>
+            <MenuItem Header="移至回收站" Click="ContextMenu_MoveToTrash_Click"/>
+        </ContextMenu>
+    </Window.Resources>
+    <DockPanel>
+        <StatusBar DockPanel.Dock="Bottom" DataContext="{Binding SelectedMap}" HorizontalAlignment="Stretch">
+            <Button Padding="5,0" Content="操作..." Click="Actions_Click"/>
+            <Separator/>
+            <TextBlock>
+                大小: <Run Text="{Binding Size}"/>
+                玩家数: <Run Text="{Binding MaxPlayers}"/>
+            </TextBlock>
+            <Separator/>
+            <StatusBarItem>
+                <TextBlock x:Name="msg" ClipToBounds="True" HorizontalAlignment="Stretch"/>
+            </StatusBarItem>
+            <StatusBarItem HorizontalAlignment="Right">
+                <Hyperlink NavigateUri="https://github.com/zaevi/Ra3MapViewer" RequestNavigate="Hyperlink_RequestNavigate">Github</Hyperlink>
+            </StatusBarItem>
+        </StatusBar>
+        <ListView DockPanel.Dock="Left" 
+                  Width="300" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                  ItemsSource="{Binding Maps}" SelectedItem="{Binding SelectedMap, Mode=TwoWay}"
+                  ContextMenu="{StaticResource contextMenu}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel HorizontalAlignment="Stretch" ToolTip="{Binding DisplayName}">
+                        <TextBlock HorizontalAlignment="Right" Foreground="Gray" Text="{Binding MaxPlayers}" Padding="3,0" DockPanel.Dock="Right"/>
+                        <TextBlock Text="{Binding DisplayName}" HorizontalAlignment="Stretch" ClipToBounds="True"/>
+                    </DockPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <local:MapView Height="320" Width="320" DataContext="{Binding SelectedMap}"/>
+    </DockPanel>
+</Window>
